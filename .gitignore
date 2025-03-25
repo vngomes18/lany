@@ -32,4 +32,15 @@ yarn-error.log*
 # Arquivos temporários
 *.tmp
 *.temp
-.cache/ 
+.cache/
+
+# Imagens
+images/*
+!images/.gitkeep
+!images/logo.png
+!images/portfolio/*.jpg
+!images/portfolio/*.png
+!images/portfolio/*.webp
+!images/header/*.jpg
+!images/header/*.png
+!images/header/*.webp 

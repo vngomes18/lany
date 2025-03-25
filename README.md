@@ -1,97 +1,125 @@
 # Lany Tattoo - Site Profissional
 
-Site profissional para a tatuadora Lany, especializada em Fine Line, Minimalista, Floral, Geométrica e Escrita em São Paulo.
+Site profissional para a tatuadora Lany, especialista em Fine Line, Minimalista, Floral, Geométrica e Escrita em São Paulo.
 
-## 🎨 Sobre o Projeto
+## Sobre o Projeto
 
-Este é um site profissional desenvolvido para a tatuadora Lany, apresentando seu portfólio, informações sobre seus serviços e um sistema de agendamento online. O site foi desenvolvido com foco em:
-
+Este site foi desenvolvido para apresentar o trabalho da tatuadora Lany, oferecendo:
+- Portfólio de trabalhos
+- Informações sobre serviços
+- Sistema de agendamento online
 - Design moderno e responsivo
-- Experiência do usuário otimizada
+- Experiência de usuário otimizada
 - Performance e SEO
 - Acessibilidade
 - Sistema de agendamento integrado
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
-- Font Awesome (ícones)
+- Font Awesome
 - Google Fonts
-- FullCalendar (para o sistema de agendamento)
+- FullCalendar
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
-lany-tattoo/
+lany/
 ├── index.html          # Página inicial
 ├── portfolio.html      # Página de portfólio
 ├── agendamento.html    # Página de agendamento
 ├── styles.css          # Estilos principais
-├── portfolio.css       # Estilos específicos do portfólio
-├── script.js           # JavaScript principal
-└── portfolio.js        # JavaScript do portfólio
+├── portfolio.css       # Estilos do portfólio
+├── script.js           # Scripts principais
+├── portfolio.js        # Scripts do portfólio
+├── images/            # Pasta de imagens
+│   ├── header/       # Imagens de cabeçalho
+│   ├── portfolio/    # Imagens do portfólio
+│   └── logo.png      # Logo do site
+├── README.md         # Documentação
+└── LICENSE          # Licença MIT
 ```
 
-## 🚀 Funcionalidades
+## Estrutura de Imagens
 
-### Página Inicial
+O projeto utiliza uma estrutura organizada para as imagens:
+
+- `images/header/`: Imagens utilizadas nos cabeçalhos das páginas
+- `images/portfolio/`: Imagens do portfólio de trabalhos
+- `images/logo.png`: Logo do site
+
+### Formatos Suportados
+- JPG (para fotografias)
+- PNG (para imagens com transparência)
+- WebP (para melhor performance)
+
+### Requisitos de Imagens
+- Resolução mínima: 800x600 pixels
+- Tamanho máximo por arquivo: 2MB
+- Otimização recomendada para web
+
+## Funcionalidades
+
+### Home Page
 - Header com chamada para ação
-- Seção "Sobre" com informações da tatuadora
-- Seção de contato com mapa e informações
+- Seção Sobre com informações da tatuadora
+- Seção de contato com mapa
 - Menu de navegação responsivo
 
 ### Portfólio
-- Galeria de trabalhos com filtros por estilo
-- Modal com detalhes de cada tatuagem
+- Galeria de trabalhos
+- Filtros por estilo
+- Modal para detalhes
 - Animações suaves
 - Layout responsivo em grid
 
 ### Agendamento
-- Sistema de agendamento em etapas
+- Sistema de agendamento passo a passo
 - Calendário interativo
 - Cálculo automático de orçamento
-- Formulário de informações do cliente
-- Políticas de cancelamento e termos de serviço
+- Formulário de dados do cliente
+- Políticas de cancelamento
 
-## 💻 Como Executar
+## Como Executar
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/lany-tattoo.git
+git clone https://github.com/vngomes18/lany.git
 ```
 
-2. Abra o arquivo `index.html` em seu navegador ou use um servidor local.
+2. Abra o arquivo `index.html` em seu navegador
 
-## 📱 Responsividade
+## Responsividade
 
-O site é totalmente responsivo e se adapta aos seguintes breakpoints:
-- Mobile: até 480px
-- Tablet: 481px até 768px
-- Desktop: acima de 769px
+O site é totalmente responsivo com breakpoints em:
+- Mobile: < 768px
+- Tablet: 768px - 1024px
+- Desktop: > 1024px
 
-## 🔍 SEO e Performance
+## SEO e Performance
 
 - Meta tags otimizadas
-- Imagens com lazy loading
-- CSS e JavaScript minificados
-- Estrutura semântica HTML5
-- Otimização de fontes e recursos
+- Lazy loading de imagens
+- Recursos minificados
+- Estrutura HTML semântica
+- Sitemap.xml
+- Robots.txt
 
-## ♿ Acessibilidade
+## Acessibilidade
 
 - Estrutura semântica
 - Contraste adequado
 - Navegação por teclado
-- Textos alternativos para imagens
-- ARIA labels quando necessário
+- Labels ARIA
+- Alt text em imagens
 
-## 📄 Licença
+## Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## 👥 Contribuição
+## Contribuição
 
 1. Faça um Fork do projeto
 2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
@@ -99,6 +127,6 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
-## 📞 Contato
+## Contato
 
-Para mais informações ou suporte, entre em contato através do email: contato@lanytattoo.com.br 
+Para suporte, envie um email para: suporte@lanytattoo.com.br 
