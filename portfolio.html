@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de tatuagens da Lany Tattoo, especializada em Fine Line, Minimalista, Floral, Geométrica e Escrita em São Paulo.">
+    <meta name="keywords" content="tatuagem, portfólio, fine line, minimalista, floral, geométrica, escrita, São Paulo">
+    <meta name="author" content="Lany Tattoo">
+    <meta property="og:title" content="Portfólio - Lany Tattoo">
+    <meta property="og:description" content="Conheça nossos trabalhos em Fine Line, Minimalista, Floral, Geométrica e Escrita.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=1200">
+    <meta property="og:url" content="https://lanytattoo.com.br/portfolio">
+    <title>Portfólio - Lany Tattoo</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Lany Tattoo</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="portfolio.html">Portfólio</a></li>
+                <li><a href="index.html#sobre">Sobre</a></li>
+                <li><a href="agendamento.html">Agendar</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="portfolio-header">
+        <div class="header-content">
+            <h1>Nosso Portfólio</h1>
+            <p>Conheça alguns dos nossos trabalhos mais recentes e inspire-se para sua próxima tatuagem</p>
+        </div>
+    </header>
+
+    <!-- Portfólio -->
+    <main class="portfolio-container">
+        <!-- Filtros -->
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="fine-line">Fine Line</button>
+            <button class="filter-btn" data-filter="minimalista">Minimalista</button>
+            <button class="filter-btn" data-filter="floral">Floral</button>
+            <button class="filter-btn" data-filter="geometrica">Geométrica</button>
+            <button class="filter-btn" data-filter="escrita">Escrita</button>
+        </div>
+
+        <!-- Grid de Trabalhos -->
+        <div class="portfolio-grid">
+            <!-- Fine Line -->
+            <article class="portfolio-item" data-category="fine-line">
+                <div class="portfolio-image">
+                    <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?auto=format&fit=crop&w=800" 
+                         alt="Tatuagem Fine Line no braço" 
+                         loading="lazy">
+                </div>
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Delicada Fine Line</h3>
+                        <p>Braço - Fine Line</p>
+                        <button class="view-details-btn" data-id="1">Ver Detalhes</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Minimalista -->
+            <article class="portfolio-item" data-category="minimalista">
+                <div class="portfolio-image">
+                    <img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?auto=format&fit=crop&w=800" 
+                         alt="Tatuagem Minimalista no pulso" 
+                         loading="lazy">
+                </div>
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Traços Minimalistas</h3>
+                        <p>Pulso - Minimalista</p>
+                        <button class="view-details-btn" data-id="2">Ver Detalhes</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Floral -->
+            <article class="portfolio-item" data-category="floral">
+                <div class="portfolio-image">
+                    <img src="https://images.unsplash.com/photo-1610634798744-3ba3198b3930?auto=format&fit=crop&w=800" 
+                         alt="Tatuagem Floral na costela" 
+                         loading="lazy">
+                </div>
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Jardim Secreto</h3>
+                        <p>Costela - Floral</p>
+                        <button class="view-details-btn" data-id="3">Ver Detalhes</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Geométrica -->
+            <article class="portfolio-item" data-category="geometrica">
+                <div class="portfolio-image">
+                    <img src="https://images.unsplash.com/photo-1611501267509-fd8cf7c2f9a5?auto=format&fit=crop&w=800" 
+                         alt="Tatuagem Geométrica no ombro" 
+                         loading="lazy">
+                </div>
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Padrões Geométricos</h3>
+                        <p>Ombro - Geométrica</p>
+                        <button class="view-details-btn" data-id="4">Ver Detalhes</button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Escrita -->
+            <article class="portfolio-item" data-category="escrita">
+                <div class="portfolio-image">
+                    <img src="https://images.unsplash.com/photo-1578301978069-45264734cddc?auto=format&fit=crop&w=800" 
+                         alt="Tatuagem Escrita no antebraço" 
+                         loading="lazy">
+                </div>
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Palavras Eternas</h3>
+                        <p>Antebraço - Escrita</p>
+                        <button class="view-details-btn" data-id="5">Ver Detalhes</button>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Modal de Detalhes -->
+        <div id="portfolioModal" class="modal">
+            <div class="modal-content">
+                <button class="close-modal">&times;</button>
+                <div class="modal-body">
+                    <div class="modal-gallery">
+                        <img src="" alt="Imagem Principal" class="modal-main-image">
+                        <div class="modal-thumbnails">
+                            <!-- Thumbnails serão inseridos via JavaScript -->
+                        </div>
+                    </div>
+                    <div class="modal-info">
+                        <h2 class="modal-title">Título da Tatuagem</h2>
+                        <div class="modal-details">
+                            <div class="detail-item">
+                                <i class="fas fa-paint-brush"></i>
+                                <span>Estilo: <strong class="modal-style">Fine Line</strong></span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Duração: <strong class="modal-duration">2-3 horas</strong></span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-heart"></i>
+                                <span>Cicatrização: <strong class="modal-healing">2-3 semanas</strong></span>
+                            </div>
+                        </div>
+                        <div class="modal-description">
+                            <p>Descrição detalhada da tatuagem e do processo criativo.</p>
+                        </div>
+                        <div class="modal-care">
+                            <h3>Cuidados Pós-Tatuagem</h3>
+                            <ul>
+                                <li>Manter a área limpa e seca</li>
+                                <li>Evitar exposição solar</li>
+                                <li>Hidratar a pele regularmente</li>
+                                <li>Não coçar a região</li>
+                                <li>Usar protetor solar após cicatrização</li>
+                            </ul>
+                        </div>
+                        <a href="agendamento.html" class="modal-cta">Agendar Consulta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Lany Tattoo. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="portfolio.js"></script>
+</body>
+</html> 

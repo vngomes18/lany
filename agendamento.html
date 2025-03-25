@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento - Lany Tattoo</title>
+    <meta name="description" content="Agende sua tatuagem com a Lany Tattoo em São Paulo. Sistema de agendamento online com calendário interativo e orçamento automático.">
+    <meta name="keywords" content="tatuagem, agendamento, Lany Tattoo, São Paulo, tatuadora, fine line, minimalista, floral, geométrica, escrita">
+    <meta name="author" content="Lany Tattoo">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lanytattoo.com.br/agendamento">
+    <meta property="og:title" content="Agendamento - Lany Tattoo">
+    <meta property="og:description" content="Agende sua tatuagem com a Lany Tattoo em São Paulo. Sistema de agendamento online com calendário interativo e orçamento automático.">
+    <meta property="og:image" content="https://lanytattoo.com.br/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://lanytattoo.com.br/agendamento">
+    <meta property="twitter:title" content="Agendamento - Lany Tattoo">
+    <meta property="twitter:description" content="Agende sua tatuagem com a Lany Tattoo em São Paulo. Sistema de agendamento online com calendário interativo e orçamento automático.">
+    <meta property="twitter:image" content="https://lanytattoo.com.br/images/og-image.jpg">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- FullCalendar -->
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="agendamento.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Lany Tattoo</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfólio</a></li>
+                <li><a href="index.html#sobre">Sobre</a></li>
+                <li><a href="agendamento.html" class="active">Agendar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="booking-header">
+        <div class="header-content">
+            <h1>Agende sua Tatuagem</h1>
+            <p>Transforme sua ideia em arte com a Lany Tattoo</p>
+        </div>
+    </header>
+
+    <!-- Sistema de Agendamento -->
+    <main class="booking-system">
+        <!-- Etapas do Agendamento -->
+        <div class="booking-steps">
+            <div class="step active" data-step="1">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Data e Hora</span>
+            </div>
+            <div class="step" data-step="2">
+                <i class="fas fa-paint-brush"></i>
+                <span>Estilo e Tamanho</span>
+            </div>
+            <div class="step" data-step="3">
+                <i class="fas fa-calculator"></i>
+                <span>Orçamento</span>
+            </div>
+            <div class="step" data-step="4">
+                <i class="fas fa-user"></i>
+                <span>Dados Pessoais</span>
+            </div>
+            <div class="step" data-step="5">
+                <i class="fas fa-check-circle"></i>
+                <span>Confirmação</span>
+            </div>
+        </div>
+
+        <!-- Formulário de Agendamento -->
+        <div class="booking-container">
+            <!-- Etapa 1: Data e Hora -->
+            <section class="booking-section active" id="step1">
+                <h2>Escolha a Data e Hora</h2>
+                <div id="calendar"></div>
+                <div class="time-slots">
+                    <h3>Horários Disponíveis</h3>
+                    <div class="slots-grid">
+                        <!-- Horários serão inseridos via JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Etapa 2: Estilo e Tamanho -->
+            <section class="booking-section" id="step2">
+                <h2>Estilo e Tamanho da Tatuagem</h2>
+                <form class="booking-form">
+                    <div class="form-group">
+                        <label for="style">Estilo da Tatuagem</label>
+                        <select id="style" required>
+                            <option value="">Selecione um estilo</option>
+                            <option value="fine-line">Fine Line</option>
+                            <option value="minimalista">Minimalista</option>
+                            <option value="floral">Floral</option>
+                            <option value="geometrica">Geométrica</option>
+                            <option value="escrita">Escrita</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="size">Tamanho (cm)</label>
+                        <input type="number" id="size" min="1" max="50" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Localização no Corpo</label>
+                        <input type="text" id="location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Descrição Detalhada</label>
+                        <textarea id="description" rows="4" required></textarea>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Etapa 3: Orçamento -->
+            <section class="booking-section" id="step3">
+                <h2>Orçamento</h2>
+                <div class="quote-container">
+                    <div class="quote-details">
+                        <div class="quote-item">
+                            <span>Estilo:</span>
+                            <span id="quote-style">-</span>
+                        </div>
+                        <div class="quote-item">
+                            <span>Tamanho:</span>
+                            <span id="quote-size">-</span>
+                        </div>
+                        <div class="quote-item">
+                            <span>Localização:</span>
+                            <span id="quote-location">-</span>
+                        </div>
+                        <div class="quote-item">
+                            <span>Valor Base:</span>
+                            <span id="quote-base">-</span>
+                        </div>
+                        <div class="quote-item">
+                            <span>Ajustes:</span>
+                            <span id="quote-adjustments">-</span>
+                        </div>
+                        <div class="quote-item total">
+                            <span>Total:</span>
+                            <span id="quote-total">-</span>
+                        </div>
+                    </div>
+                    <div class="quote-notes">
+                        <p>* O valor final pode variar dependendo da complexidade do design</p>
+                        <p>* Inclui material descartável e primeiros cuidados</p>
+                        <p>* Não inclui desenhos personalizados</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Etapa 4: Dados Pessoais -->
+            <section class="booking-section" id="step4">
+                <h2>Seus Dados</h2>
+                <form class="booking-form">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthdate">Data de Nascimento</label>
+                        <input type="date" id="birthdate" required>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Etapa 5: Confirmação -->
+            <section class="booking-section" id="step5">
+                <h2>Confirmação do Agendamento</h2>
+                <div class="confirmation-details">
+                    <div id="booking-summary">
+                        <!-- Resumo será inserido via JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Botões de Navegação -->
+            <div class="button-group">
+                <button class="prev-step" style="display: none;">Voltar</button>
+                <button class="next-step">Próximo</button>
+                <button id="confirm-booking" style="display: none;">Confirmar Agendamento</button>
+            </div>
+        </div>
+
+        <!-- Políticas -->
+        <div class="booking-policies">
+            <div class="policy-section">
+                <h2>Política de Cancelamento</h2>
+                <div class="policy-content">
+                    <ul>
+                        <li>Cancelamento gratuito até 48h antes do agendamento</li>
+                        <li>Cancelamento com 50% de taxa entre 24h e 48h antes</li>
+                        <li>Cancelamento com 100% de taxa em menos de 24h</li>
+                        <li>No-shows serão cobrados 100% do valor</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="policy-section">
+                <h2>Cuidados Pós-Tatuagem</h2>
+                <div class="policy-content">
+                    <ul>
+                        <li>Manter a tatuagem limpa e seca</li>
+                        <li>Usar protetor solar após a cicatrização</li>
+                        <li>Evitar exposição ao sol por 2 semanas</li>
+                        <li>Não coçar ou arrancar crostas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Lany Tattoo. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+    <script src="script.js"></script>
+    <script src="agendamento.js"></script>
+</body>
+</html> 
