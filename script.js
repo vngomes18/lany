@@ -665,3 +665,386 @@ document.addEventListener('DOMContentLoaded', function() {
 
     lazyImages.forEach(img => imageObserver.observe(img));
 });
+
+// Carrossel de Fotos
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = {
+        wrapper: document.querySelector('.carousel-wrapper'),
+        slides: document.querySelectorAll('.carousel-slide'),
+        prevBtn: document.querySelector('.carousel-btn.prev'),
+        nextBtn: document.querySelector('.carousel-btn.next'),
+        dotsContainer: document.querySelector('.carousel-dots'),
+        currentSlide: 0,
+        totalSlides: 0,
+        autoPlayInterval: null,
+
+        init() {
+            if (!this.wrapper || !this.slides.length) return;
+            
+            this.totalSlides = this.slides.length;
+            this.slides[0].classList.add('active');
+            this.createDots();
+            this.setupEventListeners();
+            this.startAutoPlay();
+        },
+
+        createDots() {
+            if (!this.dotsContainer) return;
+            
+            this.dotsContainer.innerHTML = '';
+            for (let i = 0; i < this.totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => this.goToSlide(i));
+                this.dotsContainer.appendChild(dot);
+            }
+            this.dots = document.querySelectorAll('.dot');
+        },
+
+        updateSlides() {
+            this.slides.forEach((slide, index) => {
+                if (index === this.currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+            this.updateDots();
+        },
+
+        updateDots() {
+            if (!this.dots) return;
+            
+            this.dots.forEach((dot, index) => {
+                if (index === this.currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        },
+
+        nextSlide() {
+            this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+            this.updateSlides();
+        },
+
+        prevSlide() {
+            this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+            this.updateSlides();
+        },
+
+        goToSlide(index) {
+            this.currentSlide = index;
+            this.updateSlides();
+        },
+
+        startAutoPlay() {
+            this.stopAutoPlay();
+            this.autoPlayInterval = setInterval(() => this.nextSlide(), 5000);
+        },
+
+        stopAutoPlay() {
+            if (this.autoPlayInterval) {
+                clearInterval(this.autoPlayInterval);
+                this.autoPlayInterval = null;
+            }
+        },
+
+        setupEventListeners() {
+            this.prevBtn.addEventListener('click', () => {
+                this.prevSlide();
+                this.resetAutoPlay();
+            });
+
+            this.nextBtn.addEventListener('click', () => {
+                this.nextSlide();
+                this.resetAutoPlay();
+            });
+
+            // Controles de teclado
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    this.prevSlide();
+                    this.resetAutoPlay();
+                } else if (e.key === 'ArrowRight') {
+                    this.nextSlide();
+                    this.resetAutoPlay();
+                }
+            });
+
+            // Controles de touch
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            this.wrapper.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                this.stopAutoPlay();
+            });
+
+            this.wrapper.addEventListener('touchmove', (e) => {
+                touchEndX = e.touches[0].clientX;
+            });
+
+            this.wrapper.addEventListener('touchend', () => {
+                const touchDiff = touchStartX - touchEndX;
+                if (Math.abs(touchDiff) > 50) {
+                    if (touchDiff > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+                this.startAutoPlay();
+            });
+
+            // Pausar autoplay quando o mouse está sobre o carrossel
+            this.wrapper.addEventListener('mouseenter', () => {
+                this.stopAutoPlay();
+            });
+
+            this.wrapper.addEventListener('mouseleave', () => {
+                this.startAutoPlay();
+            });
+        },
+
+        resetAutoPlay() {
+            this.stopAutoPlay();
+            this.startAutoPlay();
+        }
+    };
+
+    carousel.init();
+});
+
+// Dados dos trabalhos
+const galleryData = {
+    1: {
+        title: 'Fine Line',
+        image: 'images/header/IMG_1313.JPG',
+        description: 'Tatuagem em estilo Fine Line com traços delicados e precisos. Cada detalhe é cuidadosamente elaborado para criar uma peça única e elegante.',
+        duration: '2-3 horas',
+        size: '15cm',
+        location: 'Braço'
+    },
+    2: {
+        title: 'Minimalista',
+        image: 'images/header/IMG_5546.JPG',
+        description: 'Design minimalista que combina simplicidade e impacto visual. Linhas limpas e espaços negativos criam uma composição moderna e atemporal.',
+        duration: '1-2 horas',
+        size: '10cm',
+        location: 'Pulso'
+    },
+    3: {
+        title: 'Floral',
+        image: 'images/header/IMG_9864.JPG',
+        description: 'Composição floral delicada com elementos naturais. As flores e folhas são trabalhadas com detalhes suaves para criar uma peça orgânica e fluida.',
+        duration: '3-4 horas',
+        size: '20cm',
+        location: 'Costela'
+    },
+    4: {
+        title: 'Geométrica',
+        image: 'images/header/IMG_5506.JPG',
+        description: 'Padrões geométricos precisos combinados com elementos modernos. A simetria e o equilíbrio são fundamentais nesta composição única.',
+        duration: '2-3 horas',
+        size: '12cm',
+        location: 'Antebraço'
+    },
+    5: {
+        title: 'Escrita',
+        image: 'images/header/IMG_5028.JPG',
+        description: 'Lettering personalizado com tipografia única. Cada letra é desenhada à mão para criar uma mensagem verdadeiramente pessoal.',
+        duration: '1-2 horas',
+        size: '8cm',
+        location: 'Pulso'
+    }
+};
+
+// Controle do Modal
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('galleryModal');
+    const closeBtn = document.querySelector('.close-modal');
+    const detailsBtns = document.querySelectorAll('.details-btn');
+
+    // Função para abrir o modal
+    function openModal(id) {
+        const data = galleryData[id];
+        if (!data) return;
+
+        // Preencher dados do modal
+        modal.querySelector('.modal-image img').src = data.image;
+        modal.querySelector('.modal-info h3').textContent = data.title;
+        modal.querySelector('.modal-description').textContent = data.description;
+        modal.querySelector('.detail-item:nth-child(1) strong').textContent = data.duration;
+        modal.querySelector('.detail-item:nth-child(2) strong').textContent = data.size;
+        modal.querySelector('.detail-item:nth-child(3) strong').textContent = data.location;
+
+        // Mostrar modal com animação
+        modal.style.display = 'block';
+        setTimeout(() => {
+            modal.style.opacity = '1';
+        }, 10);
+
+        // Desabilitar scroll do body
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Função para fechar o modal
+    function closeModal() {
+        modal.style.opacity = '0';
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+        document.body.style.overflow = 'auto';
+    }
+
+    // Event listeners
+    detailsBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-id');
+            openModal(id);
+        });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    // Fechar modal ao clicar fora
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Fechar modal com tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            closeModal();
+        }
+    });
+});
+
+// Controle dos Cards
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.gallery-card');
+    const detailsBtns = document.querySelectorAll('.details-btn');
+    const closeBtns = document.querySelectorAll('.close-details');
+    let overlay = document.createElement('div');
+    overlay.className = 'overlay';
+    document.body.appendChild(overlay);
+
+    // Prevenir scroll do body quando um card está expandido
+    function toggleBodyScroll(disable) {
+        if (disable) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+
+    function expandCard(card) {
+        // Fechar qualquer card expandido
+        cards.forEach(c => c.classList.remove('expanded'));
+        
+        // Expandir o card selecionado
+        card.classList.add('expanded');
+        overlay.classList.add('active');
+        toggleBodyScroll(true);
+
+        // Adicionar classe para ajustar o layout em dispositivos móveis
+        if (window.innerWidth <= 768) {
+            card.style.position = 'fixed';
+            card.style.top = '0';
+            card.style.left = '0';
+            card.style.width = '100%';
+            card.style.height = '100%';
+            card.style.zIndex = '1000';
+        }
+    }
+
+    function closeCard(card) {
+        card.classList.remove('expanded');
+        overlay.classList.remove('active');
+        toggleBodyScroll(false);
+
+        // Remover estilos específicos para mobile
+        if (window.innerWidth <= 768) {
+            card.style.position = '';
+            card.style.top = '';
+            card.style.left = '';
+            card.style.width = '';
+            card.style.height = '';
+            card.style.zIndex = '';
+        }
+    }
+
+    // Event listeners para os botões
+    detailsBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const card = btn.closest('.gallery-card');
+            expandCard(card);
+        });
+    });
+
+    closeBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const card = btn.closest('.gallery-card');
+            closeCard(card);
+        });
+    });
+
+    // Fechar ao clicar no overlay
+    overlay.addEventListener('click', () => {
+        const expandedCard = document.querySelector('.gallery-card.expanded');
+        if (expandedCard) {
+            closeCard(expandedCard);
+        }
+    });
+
+    // Fechar com a tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const expandedCard = document.querySelector('.gallery-card.expanded');
+            if (expandedCard) {
+                closeCard(expandedCard);
+            }
+        }
+    });
+
+    // Ajustar layout em mudança de orientação
+    window.addEventListener('orientationchange', () => {
+        const expandedCard = document.querySelector('.gallery-card.expanded');
+        if (expandedCard) {
+            closeCard(expandedCard);
+        }
+    });
+
+    // Prevenir comportamento padrão de scroll em dispositivos móveis
+    document.addEventListener('touchmove', (e) => {
+        const expandedCard = document.querySelector('.gallery-card.expanded');
+        if (expandedCard) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+
+    // Ajustar layout em mudança de tamanho da janela
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const expandedCard = document.querySelector('.gallery-card.expanded');
+            if (expandedCard) {
+                if (window.innerWidth <= 768) {
+                    expandCard(expandedCard);
+                } else {
+                    closeCard(expandedCard);
+                }
+            }
+        }, 250);
+    });
+});
